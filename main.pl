@@ -3,34 +3,37 @@
 use strict;
 use warnings;
 
-print "Enter if you want to guess or choose the number\n"
+print "Enter if you want to guess or choose the number\n";
 print "1. Guess\n 2. Choose\n";
 
-my $choice=<STDIN>
+my $choice=<STDIN>;
+chomp($choice);
 
 if($choice==1){
 
     # user guesses the number
 
-    int $num=int(1+rand(100));
-    print("You have 5 tries");
+    my $num=int(1+rand(100));
+    print "The number lies between 1 and 100. You have 5 tries\n";
 
-    $i=5;
+    my $i=5;
+    my $found=0;
     while($i>0){
-        int $guess=<STDIN>;
-        if($guess==num){
-            $found=true;
+        my $guess=<STDIN>;
+        if($guess==$num){
+            $found=1;
             break;
-        }elsif($guess<num){
+        }elsif($guess<$num){
             print "Too low!\n";
         }else{
             print "Too high!\n";
         }
+        $i--;
     }
     if($found){
         print "Your guess is right! YOU WIN";
     }else{
-        print "You lost!";
+        print "You lost! The number was $num";
     }
 
 
