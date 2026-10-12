@@ -22,7 +22,7 @@ if($choice==1){
         my $guess=<STDIN>;
         if($guess==$num){
             $found=1;
-            break;
+            last;
         }elsif($guess<$num){
             print "Too low!\n";
         }else{
