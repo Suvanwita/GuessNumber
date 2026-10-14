@@ -3,8 +3,10 @@
 use strict;
 use warnings;
 
-print "Enter if you want to guess or choose the number\n";
-print "1. Guess\n 2. Choose\n";
+use Term::ANSIColor;
+
+print colored("Enter if you want to guess or choose the number\n","cyan");
+print colored("1. Guess\n2. Choose\n","blue");
 
 my $choice=<STDIN>;
 chomp($choice);
@@ -31,9 +33,9 @@ if($choice==1){
         $i--;
     }
     if($found){
-        print "Your guess is right! YOU WIN";
+        print colored("Your guess is right! YOU WIN\n","green");
     }else{
-        print "You lost! The number was $num";
+        print colored("You lost! The number was $num\n","magenta");
     }
 
 
@@ -47,13 +49,14 @@ if($choice==1){
 
     while($low<=$high){
         my $mid=int($low+($high-$low)/2);
-        print "Is it $mid? \nAnswer \n1. Right \n2. Search lower \n3. Search higher\n";
+        print colored("Is it $mid?\n", "bold bright_cyan");
+        print colored("Answer \n1. Right \n2. Search lower \n3. Search higher\n","yellow");
         
         my $ans=<STDIN>;
         chomp($ans);
 
         if($ans==1){
-            print "The number is $mid";
+            print colored("The number is $mid", 'green');
             $found=1;
             last;
         }elsif($ans==2){
@@ -63,9 +66,9 @@ if($choice==1){
         }
     }
     if(!$found){
-        print "Not found! :(";
+        print colored("Not found! :(", 'magenta');
     }
 
 }else{
-    print "Invalid choice\n";
+    print colored("Invalid choice\n", 'red');
 }
